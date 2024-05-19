@@ -1,11 +1,12 @@
 from flask import Flask, request, render_template
-import joblib
+import pickle
 
-import tensorflow
 
-file_name = joblib.dump(tensorflow, "Sequencial.joblib")
 
-model = joblib.load(file_name)
+
+
+
+model = pickle.load(open('Matrix G.ipynb','rb'))
 
 app = Flask(__name__)
 
@@ -15,11 +16,25 @@ def home():
     return render_template('index.html')
 
 
+
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    uploaded_file = request.files['file']
+
+    data = pd.read_csv(uploaded_file)
+
+
+    return "File uploaded and processed successfully!"
+
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
-    feature1 = float(request.form['feature1'])
-    feature2 = float(request.form['feature2'])
-    prediction = model.predict([[feature1, feature2]])
+    feature0 = float(request.form['feature0'])
+    prediction = model.predict_next_year([[feature0]])
     return render_template('index.html', prediction=prediction[0])
 
 

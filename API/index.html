@@ -10,12 +10,13 @@
 <body>
     <form id="predictionForm">
         <h1>Weather Prediction Model</h1>
-        <label for="feature0">City:</label>
-        <input type="text" id="feature0" name="feature0" >
         <label for="feature1">Date:</label>
         <input type="date" id="feature1" name="feature1" required>
         <label for="feature2">Time:</label>
         <input type="time" id="feature2" name="feature2" required>
+        <label for="feature0">Dataset:</label>
+        <input type="file" id="feature0" name="feature0" >
+
         <button type="submit">Predict</button>
 
     </form>
@@ -24,15 +25,22 @@
     <script>
         document.getElementById('predictionForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const feature2 = document.getElementById('feature1').value;
-            const feature3 = document.getElementById('feature2').value;
+            const feature0 = document.getElementById('feature0').value;
+
             // TODO: Implement the API call to the prediction endpoint
             // For demonstration, we'll simulate a prediction result
+            // setTimeout(() => {
+            //     const predictionResult =
+            //     document.getElementById('predictionResult').textContent += predictionResult;
+            //     document.getElementById('predictionResult').style.display = 'block';
+            // }, 1000);
             setTimeout(() => {
-                const predictionResult =  app.predict
-                document.getElementById('predictionResult').textContent += predictionResult;
-                document.getElementById('predictionResult').style.display = 'block';
-            }, 1000);
+                const predictionResult = document.getElementById('predictionResult');
+                let prediction;
+                predictionResult.textContent = 'Prediction: ' + prediction[0]; // Update with your actual prediction value
+                predictionResult.style.display = 'block';
+            },1000);
+
         });
     </script>
 </body>
