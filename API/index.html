@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction Model</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.py">
+</head>
+<body>
+    <form id="predictionForm">
+        <h1>Weather Prediction Model</h1>
+        <label for="feature1">Date:</label>
+        <input type="date" id="feature1" name="feature1" required>
+        <label for="feature2">Time:</label>
+        <input type="time" id="feature2" name="feature2" required>
+        <label for="feature0">Dataset:</label>
+        <input type="file" id="feature0" name="feature0" >
+
+        <button type="submit">Predict</button>
+
+    </form>
+    <p class="prediction" id="predictionResult" style="display:none;margin-bottom: -400px;position: absolute">Prediction: </p>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const feature0 = document.getElementById('feature0').value;
+
+            // TODO: Implement the API call to the prediction endpoint
+            // For demonstration, we'll simulate a prediction result
+            // setTimeout(() => {
+            //     const predictionResult =
+            //     document.getElementById('predictionResult').textContent += predictionResult;
+            //     document.getElementById('predictionResult').style.display = 'block';
+            // }, 1000);
+            setTimeout(() => {
+                const predictionResult = document.getElementById('predictionResult');
+                let prediction;
+                predictionResult.textContent = 'Prediction: ' + prediction[0]; // Update with your actual prediction value
+                predictionResult.style.display = 'block';
+            },1000);
+
+        });
+    </script>
+</body>
+</html>
